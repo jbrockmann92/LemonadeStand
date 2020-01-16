@@ -13,6 +13,11 @@ namespace Lemonade
         int currentDay;
         int lengthofGame = 7;
         Store store = new Store();
+        List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
+        Lemon lemon = new Lemon();
+        SugarCube sugarCube = new SugarCube();
+        IceCube iceCube = new IceCube();
+        Cup cup = new Cup();
 
         public void Introduction()
         {
@@ -31,10 +36,15 @@ namespace Lemonade
             Console.ReadLine();
         }
 
-        public void BeginGame()
+        public void RunGame()
         {
             //Passing player into the GoToStore function. Player actually goes to store. Makes sense
             store.GoToStore(player);
+            PrintInventory();
+            DailyInventoryUsed();
+            PrintInventory();
+            Console.ReadLine();
+
         }
 
         
@@ -45,14 +55,18 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
         }
-<<<<<<< HEAD
-
-
-=======
-        public void CreateRecipe()
+        public void DailyInventoryUsed()
         {
-
+            //Not removing like it looks like it should. Not sure why
+            foreach(Cup cupsold in cupsSold)
+            {
+                player.inventory.lemons.Remove(lemon);
+                player.inventory.sugarCubes.Remove(sugarCube);
+                player.inventory.iceCubes.Remove(iceCube);
+                player.inventory.cups.Remove(cup);
+            }
         }
->>>>>>> fd1fd429a85c7c15619f295082c698720b728bdb
+
+
     }
 }

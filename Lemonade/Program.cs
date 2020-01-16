@@ -12,7 +12,7 @@ namespace Lemonade
         {
             Game game = new Game();
             game.Introduction();
-            game.BeginGame();
+            game.RunGame();
         }
     }
 }
