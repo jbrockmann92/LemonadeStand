@@ -8,7 +8,7 @@ namespace Lemonade
 {
     class Inventory
     {
-        public List<Lemon> lemons;
+        public List<Lemon> lemons = new List<Lemon>();
         public List<IceCube> iceCubes;
         public List<Cup> cups;
         public List<SugarCube> sugarCubes;
