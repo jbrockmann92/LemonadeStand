@@ -31,13 +31,13 @@ namespace Lemonade
             Console.ReadLine();
         }
 
-        public void BeginGame()
+        public void RunGame()
         {
             //Passing player into the GoToStore function. Player actually goes to store. Makes sense
             store.GoToStore(player);
         }
 
-        
+
         public void PrintInventory()
         {
             Console.WriteLine($"You have {player.inventory.lemons.Count} lemons");
@@ -45,14 +45,5 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
         }
-<<<<<<< HEAD
-
-
-=======
-        public void CreateRecipe()
-        {
-
-        }
->>>>>>> fd1fd429a85c7c15619f295082c698720b728bdb
     }
 }
