@@ -34,6 +34,8 @@ namespace Lemonade
             Console.WriteLine("Set your price per cup");
             recipe.pricePerCup = double.Parse(Console.ReadLine());
         }
+
+        //Still need to remove whatever items we use from our inventory. Different function or the same one?
     }
     
 }
