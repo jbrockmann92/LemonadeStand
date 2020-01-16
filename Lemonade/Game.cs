@@ -11,6 +11,7 @@ namespace Lemonade
         Player player;
         List<Day> days;
         int currentDay;
+        int lengthofGame;
 
         public void Introduction()
         {
@@ -21,6 +22,7 @@ namespace Lemonade
 
         public void BeginGame()
         {
+            lengthofGame = 7;
 
         }
     }
