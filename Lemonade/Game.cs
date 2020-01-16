@@ -44,5 +44,9 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
         }
+        public void CreateRecipe()
+        {
+
+        }
     }
 }

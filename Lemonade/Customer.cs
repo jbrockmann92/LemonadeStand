@@ -9,5 +9,15 @@ namespace Lemonade
     class Customer
     {
         public string name;
+        public int chanceToBuy;
+
+        public Customer()
+        {
+
+        }
+        public void Buy()
+        {
+            Console.WriteLine("{0} bought lemonade", name);
+        }
     }
 }
