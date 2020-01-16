@@ -37,6 +37,7 @@ namespace Lemonade
             store.GoToStore(player);
         }
 
+        
         public void PrintInventory()
         {
             Console.WriteLine($"You have {player.inventory.lemons.Count} lemons");
@@ -44,5 +45,7 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
         }
+
+
     }
 }

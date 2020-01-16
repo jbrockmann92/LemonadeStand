@@ -10,7 +10,7 @@ namespace Lemonade
     {
         public string condition;
         public int temperature;
-        List<string> weatherConditions;
+        public List<string> weatherConditions = new List<string>() { "Sunny", "Hazy", "Cloudy", "Rainy", "Mostly Sunny" };
         public string predictedForecast;
     }
 }
