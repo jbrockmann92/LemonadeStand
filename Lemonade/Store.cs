@@ -40,7 +40,6 @@ namespace Lemonade
 
         public void BuyInventory(Player player)
         {
-            //If statements for each option to buy?
             Console.WriteLine("How many Lemons would you like to buy?");
             moreLemons = int.Parse(Console.ReadLine());
             AddLemons(player);
@@ -58,17 +57,17 @@ namespace Lemonade
             AddCups(player);
         }
 
-        //Need to subtract from wallet as well
-
         public void AddLemons(Player player)
         {
-            for (int i= 0; i < moreLemons; i++)
+            for (int i= 1; i < moreLemons; i++)
             {
                 Lemon lemon = new Lemon();
                 player.inventory.lemons.Add(lemon);
                 player.wallet.money -= pricePerLemon * moreLemons;
             }
         }
+        //Have to put i=1 in this case, but i=0 in the others for some reason to get the same result
+        //Seems like an error or i is holding its value at one or something when it moves to the next for loop
 
         public void AddSugar(Player player)
         {

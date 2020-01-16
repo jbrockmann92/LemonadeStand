@@ -41,7 +41,7 @@ namespace Lemonade
             //Passing player into the GoToStore function. Player actually goes to store. Makes sense
             store.GoToStore(player);
             PrintInventory();
-            DailyInventoryUsed();
+            DailyInventoryUsed(player);
             PrintInventory();
             Console.ReadLine();
 
@@ -55,12 +55,10 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
         }
-<<<<<<< HEAD
-=======
-        public void DailyInventoryUsed()
+        public void DailyInventoryUsed(Player player)
         {
-            //Not removing like it looks like it should. Not sure why
-            foreach(Cup cupsold in cupsSold)
+            //Not removing like it looks like it should. Not sure why. Seems like it's trying to call a different player instance or something
+            for (int i = 0; i < cupsSold.Count; i++)
             {
                 player.inventory.lemons.Remove(lemon);
                 player.inventory.sugarCubes.Remove(sugarCube);
@@ -68,8 +66,5 @@ namespace Lemonade
                 player.inventory.cups.Remove(cup);
             }
         }
-
-
->>>>>>> a935d035b240ce23a526eeb480b5c10993b2b523
     }
 }
