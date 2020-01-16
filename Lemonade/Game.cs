@@ -11,5 +11,17 @@ namespace Lemonade
         Player player;
         List<Day> days;
         int currentDay;
+
+        public void Introduction()
+        {
+            Console.WriteLine("Hello, welcome to the Lemonade Stand Game");
+            Console.WriteLine("In this game, you'll be the owner of a lemonade stand, and your decisions will be the difference between");
+            Console.WriteLine("money and fame, and homelessness. The choice is yours.");
+        }
+
+        public void BeginGame()
+        {
+
+        }
     }
 }
