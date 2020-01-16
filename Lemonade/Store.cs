@@ -17,7 +17,6 @@ namespace Lemonade
         int moreSugar;
         int moreIce;
         int moreCups;
-        //Not sure if this is right
 
         //Need a method here to bring the Player into the store. Need to run right after amount of days to play is declared,
         //and after each day. Possibly optional
@@ -59,12 +58,15 @@ namespace Lemonade
             AddCups(player);
         }
 
+        //Need to subtract from wallet as well
+
         public void AddLemons(Player player)
         {
             for (int i= 0; i < moreLemons; i++)
             {
                 Lemon lemon = new Lemon();
                 player.inventory.lemons.Add(lemon);
+                player.wallet.money -= pricePerLemon * moreLemons;
             }
         }
 
@@ -74,6 +76,7 @@ namespace Lemonade
             {
                 SugarCube sugar = new SugarCube();
                 player.inventory.sugarCubes.Add(sugar);
+                player.wallet.money -= pricePerSugarCube * moreSugar;
             }
         }
 
@@ -83,15 +86,17 @@ namespace Lemonade
             {
                 IceCube ice = new IceCube();
                 player.inventory.iceCubes.Add(ice);
+                player.wallet.money -= pricePerIceCube * moreIce;
             }
         }
 
         public void AddCups(Player player)
         {
-            for (int i = 0; i < moreIce; i++)
+            for (int i = 0; i < moreCups; i++)
             {
                 Cup cup = new Cup();
                 player.inventory.cups.Add(cup);
+                player.wallet.money -= pricePerCup * moreCups;
             }
         }
     }

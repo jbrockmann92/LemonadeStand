@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace Lemonade
 {
     class Cup : Item
-    {
+    { 
     }
 }
