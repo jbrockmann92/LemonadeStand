@@ -11,4 +11,5 @@ namespace Lemonade
         public double money;
         public double Money;
     }
+      
 }
