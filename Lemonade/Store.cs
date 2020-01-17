@@ -39,6 +39,7 @@ namespace Lemonade
         }
 
         public void CheckIfMoney(Player player)
+            //Probably want to check before each individual item, not just the beginning of the store
         {
             if (player.wallet.money > 0)
             {
