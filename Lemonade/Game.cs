@@ -13,6 +13,7 @@ namespace Lemonade
         int currentDay;
         int lengthofGame = 7;
         Store store = new Store();
+        Day day = new Day();
         //List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
 
         public void Introduction()
@@ -34,12 +35,15 @@ namespace Lemonade
 
         public void RunGame()
         {
-            //Passing player into the GoToStore function. Player actually goes to store. Makes sense
-            store.GoToStore(player);
-            PrintInventory();
-            DailyInventoryUsed(player);
-            PrintInventory();
-            Console.ReadLine();
+            for (int i = 0; i < lengthofGame; i++)
+            {
+                //Passing player into the GoToStore function. Player actually goes to store. Makes sense
+                store.GoToStore(player);
+                PrintInventory();
+                //DailyInventoryUsed(player);
+                PrintInventory();
+                Console.ReadLine();
+            }
 
         }
 
@@ -61,8 +65,15 @@ namespace Lemonade
         //        player.inventory.lemons.RemoveAt(0);
         //        player.inventory.sugarCubes.RemoveAt(0);
         //        player.inventory.iceCubes.RemoveAt(0);
-        //        player.inventory.cups.RemoveAt(0);
+        //        player.inventory.cups.RemoveAt(0);git pu
         //    }
         //}
+
+        public void WillBuy()
+        {
+            //Something about if the total values from CalculateWeather() and Calculate
+            day.RandomizeWeather();
+            day.CalcIngredientValues(player);
+        }
     }
 }
