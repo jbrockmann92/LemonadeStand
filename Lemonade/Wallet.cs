@@ -8,7 +8,7 @@ namespace Lemonade
 {
     class Wallet
     {
-        public double money = 20;
+        public double money = 100;
         public double Money;
     }
 

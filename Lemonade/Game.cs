@@ -14,7 +14,7 @@ namespace Lemonade
         int lengthofGame = 7;
         Store store = new Store();
         Day day = new Day();
-        List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
+        List<Cup> cupsSold = new List<Cup>();
 
         public void Introduction()
         {
@@ -41,6 +41,7 @@ namespace Lemonade
                 store.GoToStore(player);
                 PrintInventory();
                 DailyInventoryUsed(player);
+                WillBuy();
                 PrintInventory();
                 Console.ReadLine();
             }
@@ -54,6 +55,7 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.sugarCubes.Count} sugar cubes");
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
+            Console.WriteLine($"You have {player.wallet.money} left");
         }
 
         //NEED THIS! THIS IS HOW WE REMOVE ITEMS FROM THE LIST WHEN A CUSTOMER BUYS SOMETHING. NEEDS TO BE ADJUSTED FOR HOW MANY ARE IN THE RECIPE, BUT IT'S WORKING
@@ -76,8 +78,8 @@ namespace Lemonade
             day.CalcIngredientValues(player);
             //Add something here about calculating the price into the equation?
             double buyPrice = 1 - player.recipe.pricePerCup;
-            //I believe we are doing the price per cup in terms of cents, not numbers in 100
-            buyPrice *= 100;
+            double totalCupsSold = day.weatherBuyValue / (20 * buyPrice);
+            //I think this works. Seems unnecessarily complicated
         }
     }
 }

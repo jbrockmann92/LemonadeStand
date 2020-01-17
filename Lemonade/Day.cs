@@ -8,9 +8,10 @@ namespace Lemonade
 {
     class Day
     {
-        public Weather weather;
-        public List<Customer> customers;
+        public Weather weather = new Weather();
+        public List<Customer> customers = new List<Customer>();
         public int weatherBuyValue;
+        public Customer customer = new Customer();
 
         //Need a function to randomize weather
         //Need a function to randomize temperature
@@ -26,8 +27,28 @@ namespace Lemonade
         public void RandCondition()
         {
             Random rnd = new Random();
+            
             weather.predictedForecast = weather.weatherConditions[rnd.Next(5)];
-            //Probably supposed to do something about 
+            if (weather.predictedForecast == "Sunny")
+            {
+                weatherBuyValue = 100;
+            }
+            else if (weather.predictedForecast == "Mostly Sunny")
+            {
+                weatherBuyValue = 80;
+            }
+            else if (weather.predictedForecast == "Hazy")
+            {
+                weatherBuyValue = 60;
+            }
+            else if (weather.predictedForecast == "Cloudy")
+            {
+                weatherBuyValue = 40;
+            }
+            else if (weather.predictedForecast == "Rainy")
+            {
+                weatherBuyValue = 20;
+            }
         }
 
         public void RandTemperature()
@@ -46,14 +67,16 @@ namespace Lemonade
                 Customer customer = new Customer();
                 customers.Add(customer);
             }
+            weatherBuyValue += customers.Count;
         }
 
         public void CalcIngredientValues(Player player)
         {
             //Add recipe ingredient values together. Divide total by 20 and * 100 to get a number roughly between 20 and 100
             int calculateTotalIngredients = player.recipeLemons + player.recipeSugarCubes + player.recipeIceCubes;
-            calculateTotalIngredients /= 20;
-            calculateTotalIngredients *= 20;
+            calculateTotalIngredients /= 2;
+            //Trying to get this to play with Game class to Buy function that will add cups to the list of Cups there
+            weatherBuyValue += calculateTotalIngredients;
         }
     }
 }
