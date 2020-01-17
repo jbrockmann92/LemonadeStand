@@ -8,10 +8,10 @@ namespace Lemonade
 {
     class Store
     {
-        double pricePerLemon = .35;
-        double pricePerSugarCube = .15;
-        double pricePerIceCube = .1;
-        double pricePerCup = .15;
+        double pricePerLemon = .035;
+        double pricePerSugarCube = .015;
+        double pricePerIceCube = .01;
+        double pricePerCup = .015;
 
         int moreLemons;
         int moreSugar;

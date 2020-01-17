@@ -11,7 +11,7 @@ namespace Lemonade
         Player player = new Player();
         List<Day> days;
         int currentDay;
-        int lengthofGame = 7;
+        int lengthofGame = 3;
         Store store = new Store();
         Day day = new Day();
         List<Cup> cupsSold = new List<Cup>();
@@ -35,16 +35,21 @@ namespace Lemonade
 
         public void RunGame()
         {
-            for (int i = 0; i < lengthofGame; i++)
+            for (int i = 1; i < lengthofGame; i++)
             {
                 //Passing player into the GoToStore function. Player actually goes to store. Makes sense
                 store.GoToStore(player);
                 PrintInventory();
                 DailyInventoryUsed(player);
+                player.CreateRecipe();
+                player.SetPrice();
                 WillBuy();
+                AddMoney();
                 PrintInventory();
                 Console.ReadLine();
             }
+            Console.WriteLine("Game is over");
+            Console.ReadLine();
 
         }
 
@@ -90,6 +95,11 @@ namespace Lemonade
             double buyPrice = 1 - player.recipe.pricePerCup;
             double totalCupsSold = day.weatherBuyValue / (20 * buyPrice);
             //I think this works. Seems unnecessarily complicated
+            for (int i = 0; i < totalCupsSold; i++)
+            {
+                Cup cup = new Cup();
+                cupsSold.Add(cup);
+            }
         }
 
     }

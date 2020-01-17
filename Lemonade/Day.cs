@@ -13,10 +13,6 @@ namespace Lemonade
         public int weatherBuyValue;
         public Customer customer = new Customer();
 
-        //Need a function to randomize weather
-        //Need a function to randomize temperature
-        //Need a function to randomize customers
-
         public void RandomizeWeather()
         {
             RandCondition();
@@ -73,7 +69,7 @@ namespace Lemonade
         public void CalcIngredientValues(Player player)
         {
             //Add recipe ingredient values together. Divide total by 20 and * 100 to get a number roughly between 20 and 100
-            int calculateTotalIngredients = player.recipeLemons + player.recipeSugarCubes + player.recipeIceCubes;
+            int calculateTotalIngredients = player.recipe.amountOfLemons + player.recipe.amountOfSugarCubes + player.recipe.amountOfIceCubes;
             calculateTotalIngredients /= 2;
             //Trying to get this to play with Game class to Buy function that will add cups to the list of Cups there
             weatherBuyValue += calculateTotalIngredients;

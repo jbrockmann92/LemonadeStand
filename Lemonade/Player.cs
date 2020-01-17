@@ -13,13 +13,9 @@ namespace Lemonade
         public Wallet wallet = new Wallet();
         public Recipe recipe = new Recipe();
         public Pitcher pitcher = new Pitcher();
-        public int recipeLemons;
-        public int recipeSugarCubes;
-        public int recipeIceCubes;
         public void CreateRecipe()
 
         {
-            recipe = new Recipe();
             Console.WriteLine("How many Lemons in your recipe?");
             recipe.amountOfLemons = int.Parse(Console.ReadLine());
 
