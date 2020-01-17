@@ -13,11 +13,7 @@ namespace Lemonade
         int currentDay;
         int lengthofGame = 7;
         Store store = new Store();
-        List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
-        Lemon lemon = new Lemon();
-        SugarCube sugarCube = new SugarCube();
-        IceCube iceCube = new IceCube();
-        Cup cup = new Cup();
+        //List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
 
         public void Introduction()
         {
@@ -55,16 +51,18 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
         }
-        public void DailyInventoryUsed(Player player)
-        {
-            //Not removing like it looks like it should. Not sure why. Seems like it's trying to call a different player instance or something
-            for (int i = 0; i < cupsSold.Count; i++)
-            {
-                player.inventory.lemons.Remove(lemon);
-                player.inventory.sugarCubes.Remove(sugarCube);
-                player.inventory.iceCubes.Remove(iceCube);
-                player.inventory.cups.Remove(cup);
-            }
-        }
+
+        //NEED THIS! THIS IS HOW WE REMOVE ITEMS FROM THE LIST WHEN A CUSTOMER BUYS SOMETHING. NEEDS TO BE ADJUSTED FOR HOW MANY ARE IN THE RECIPE, BUT IT'S WORKING
+
+        //public void DailyInventoryUsed(Player player)
+        //{
+        //    for (int i = 0; i < cupsSold.Count; i++)
+        //    {
+        //        player.inventory.lemons.RemoveAt(0);
+        //        player.inventory.sugarCubes.RemoveAt(0);
+        //        player.inventory.iceCubes.RemoveAt(0);
+        //        player.inventory.cups.RemoveAt(0);
+        //    }
+        //}
     }
 }
