@@ -12,7 +12,7 @@ namespace Lemonade
         {
             Console.WriteLine("Hello, welcome to the Lemonade Stand Game");
             Console.WriteLine("In this game, you'll be the owner of a lemonade stand, and your decisions will be the difference between");
-            Console.WriteLine("money and fame, and homelessness. The choice is yours.");
+            Console.WriteLine("money, power, fame, the life of your dreams -- and homelessness. The choice is yours.");
             Console.WriteLine("");
             Console.WriteLine("Here are the rules: You'll buy ingredients and have the option to change your recipe every day.");
             Console.WriteLine("The better your recipe is, the higher the chances will be of customers buying your lemonade.");

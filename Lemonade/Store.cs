@@ -8,10 +8,10 @@ namespace Lemonade
 {
     class Store
     {
-        double pricePerLemon = .035;
-        double pricePerSugarCube = .015;
-        double pricePerIceCube = .01;
-        double pricePerCup = .015;
+        double pricePerLemon = .30;
+        double pricePerSugarCube = .1;
+        double pricePerIceCube = .05;
+        double pricePerCup = .15;
 
         int moreLemons;
         int moreSugar;
@@ -26,7 +26,7 @@ namespace Lemonade
         {
             Console.WriteLine("Hello, welcome to the store.");
             PrintPrices();
-            CheckIfMoney(player);
+            BuyInventory(player);
         }
 
         public void PrintPrices()
@@ -38,40 +38,58 @@ namespace Lemonade
 
         }
 
-        public void CheckIfMoney(Player player)
-            //Probably want to check before each individual item, not just the beginning of the store
-        {
-            if (player.wallet.money > 0)
-            {
-                BuyInventory(player);
-                AddLemons(player);
-                AddSugar(player);
-                AddIce(player);
-                AddCups(player);
-            }
-            else
-            {
-                Console.WriteLine("You don't have enough money!");
-            }
-        }
-
         public void BuyInventory(Player player)
         {
-            Console.WriteLine("How many Lemons would you like to buy?");
-            moreLemons = int.Parse(Console.ReadLine());
-            AddLemons(player);
+            if (player.wallet.Money >= 0)
+            {
+                Console.WriteLine("How many Lemons would you like to buy?");
+                moreLemons = int.Parse(Console.ReadLine());
+                if (player.wallet.Money > 0)
+                {
+                    AddLemons(player);
+                }
+                else
+                {
+                    Console.WriteLine("You're out of money!");
+                    return;
+                }
 
-            Console.WriteLine("How many Sugar Cubes would you like to buy?");
-            moreSugar = int.Parse(Console.ReadLine());
-            AddSugar(player);
+                Console.WriteLine("How many Sugar Cubes would you like to buy?");
+                moreSugar = int.Parse(Console.ReadLine());
+                if (player.wallet.Money > 0)
+                {
+                    AddSugar(player);
+                }
+                else
+                {
+                    Console.WriteLine("You're out of money!");
+                    return;
+                }
 
-            Console.WriteLine("How many Ice Cubes would you like to buy?");
-            moreIce = int.Parse(Console.ReadLine());
-            AddIce(player);
+                Console.WriteLine("How many Ice Cubes would you like to buy?");
+                moreIce = int.Parse(Console.ReadLine());
+                if (player.wallet.Money > 0)
+                {
+                    AddIce(player);
+                }
+                else
+                {
+                    Console.WriteLine("You're out of money!");
+                    return;
+                }
 
-            Console.WriteLine("How many cups would you like to buy?");
-            moreCups = int.Parse(Console.ReadLine());
-            AddCups(player);
+                Console.WriteLine("How many cups would you like to buy?");
+                moreCups = int.Parse(Console.ReadLine());
+                if (player.wallet.Money > 0)
+                {
+                    AddCups(player);
+                }
+                else
+                {
+                    Console.WriteLine("You're out of money!");
+                    return;
+                }
+            }
         }
 
         public void AddLemons(Player player)
@@ -80,7 +98,7 @@ namespace Lemonade
             {
                 Lemon lemon = new Lemon();
                 player.inventory.lemons.Add(lemon);
-                player.wallet.money -= pricePerLemon * moreLemons;
+                player.wallet.Money -= pricePerLemon * moreLemons;
             }
         }
         //Have to put i=1 in this case, but i=0 in the others for some reason to get the same result
@@ -92,7 +110,7 @@ namespace Lemonade
             {
                 SugarCube sugar = new SugarCube();
                 player.inventory.sugarCubes.Add(sugar);
-                player.wallet.money -= pricePerSugarCube * moreSugar;
+                player.wallet.Money -= pricePerSugarCube * moreSugar;
             }
         }
 
@@ -102,7 +120,7 @@ namespace Lemonade
             {
                 IceCube ice = new IceCube();
                 player.inventory.iceCubes.Add(ice);
-                player.wallet.money -= pricePerIceCube * moreIce;
+                player.wallet.Money -= pricePerIceCube * moreIce;
             }
         }
 
@@ -112,7 +130,7 @@ namespace Lemonade
             {
                 Cup cup = new Cup();
                 player.inventory.cups.Add(cup);
-                player.wallet.money -= pricePerCup * moreCups;
+                player.wallet.Money -= pricePerCup * moreCups;
             }
         }
     }

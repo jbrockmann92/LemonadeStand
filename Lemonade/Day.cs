@@ -15,7 +15,6 @@ namespace Lemonade
 
         public void RandomizeWeather()
         {
-            RandCondition();
             RandTemperature();
             RandCustomer();
         }
@@ -71,7 +70,7 @@ namespace Lemonade
             //Add recipe ingredient values together. Divide total by 20 and * 100 to get a number roughly between 20 and 100
             int calculateTotalIngredients = player.recipe.amountOfLemons + player.recipe.amountOfSugarCubes + player.recipe.amountOfIceCubes;
             calculateTotalIngredients /= 2;
-            //Trying to get this to play with Game class to Buy function that will add cups to the list of Cups there
+            //Trying to get this to play with Game class to Buy function that will add cups to the list of Cups there 
             weatherBuyValue += calculateTotalIngredients;
         }
     }

@@ -9,8 +9,22 @@ namespace Lemonade
     class Wallet
     {
         //Need to do some stuff with public and private / Get and Set here
-        public double money = 1000;
-        public double Money;
+        private double money = 3;
+
+        public double Money
+        {
+            get
+            {
+                return money;
+            }
+            set
+            {
+                if (value <= 0)
+                {
+                    money = 0;
+                }
+            }
+        }
     }
 
 }
