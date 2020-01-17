@@ -8,9 +8,7 @@ namespace Lemonade
 {
     class Wallet
     {
-        //Need to do some stuff with public and private / Get and Set here
         private double money = 100;
-
         public double Money
         {
             get
