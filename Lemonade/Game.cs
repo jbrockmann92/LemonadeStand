@@ -43,13 +43,13 @@ namespace Lemonade
 
         public void CheckProfitOrLoss()
         {
-            if (player.wallet.money > 1000)
+            if (player.wallet.Money > 1000)
             {
-                Console.WriteLine($"Your total profit is {1000 - player.wallet.money}");
+                Console.WriteLine($"Your total profit is {1000 - player.wallet.Money}");
             }
-            if (player.wallet.money <= 1000)
+            if (player.wallet.Money <= 1000)
             {
-                Console.WriteLine($"Your total loss is {(player.wallet.money - 1000) * -1}");
+                Console.WriteLine($"Your total loss is {(player.wallet.Money - 1000) * -1}");
             }
 
         }
@@ -67,7 +67,7 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.sugarCubes.Count} sugar cubes");
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
-            Console.WriteLine($"You have {player.wallet.money} left");
+            Console.WriteLine($"You have {player.wallet.Money} left");
             CheckProfitOrLoss();
             currentDay++;
             WeatherForecast();
@@ -79,7 +79,7 @@ namespace Lemonade
         {
             foreach (Cup cup in cupsSold)
             {
-                player.wallet.money += player.recipe.pricePerCup;
+                player.wallet.Money += player.recipe.pricePerCup;
             }
         }
 

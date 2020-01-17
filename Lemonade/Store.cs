@@ -26,7 +26,7 @@ namespace Lemonade
         {
             Console.WriteLine("Hello, welcome to the store.");
             PrintPrices();
-            CheckIfMoney(player);
+            BuyInventory(player);
         }
 
         public void PrintPrices()
@@ -36,23 +36,6 @@ namespace Lemonade
             Console.WriteLine($"Ice Cubes cost ${pricePerIceCube}");
             Console.WriteLine($"Cups cost ${pricePerCup}");
 
-        }
-
-        public void CheckIfMoney(Player player)
-            //Probably want to check before each individual item, not just the beginning of the store
-        {
-            if (player.wallet.money > 0)
-            {
-                BuyInventory(player);
-                AddLemons(player);
-                AddSugar(player);
-                AddIce(player);
-                AddCups(player);
-            }
-            else
-            {
-                Console.WriteLine("You don't have enough money!");
-            }
         }
 
         public void BuyInventory(Player player)
@@ -80,7 +63,7 @@ namespace Lemonade
             {
                 Lemon lemon = new Lemon();
                 player.inventory.lemons.Add(lemon);
-                player.wallet.money -= pricePerLemon * moreLemons;
+                player.wallet.Money -= pricePerLemon * moreLemons;
             }
         }
         //Have to put i=1 in this case, but i=0 in the others for some reason to get the same result
@@ -92,7 +75,7 @@ namespace Lemonade
             {
                 SugarCube sugar = new SugarCube();
                 player.inventory.sugarCubes.Add(sugar);
-                player.wallet.money -= pricePerSugarCube * moreSugar;
+                player.wallet.Money -= pricePerSugarCube * moreSugar;
             }
         }
 
@@ -102,7 +85,7 @@ namespace Lemonade
             {
                 IceCube ice = new IceCube();
                 player.inventory.iceCubes.Add(ice);
-                player.wallet.money -= pricePerIceCube * moreIce;
+                player.wallet.Money -= pricePerIceCube * moreIce;
             }
         }
 
@@ -112,7 +95,7 @@ namespace Lemonade
             {
                 Cup cup = new Cup();
                 player.inventory.cups.Add(cup);
-                player.wallet.money -= pricePerCup * moreCups;
+                player.wallet.Money -= pricePerCup * moreCups;
             }
         }
     }

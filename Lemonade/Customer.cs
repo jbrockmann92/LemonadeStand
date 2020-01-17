@@ -10,13 +10,12 @@ namespace Lemonade
     {
         public string name;
         public int chanceToBuy;
-        public Customer()
-        {
+        public List<Customer> customers = new List<Customer>() { };
 
-        }
-        public void Buy()
+        public void ChanceToBuy(Customer customer)
         {
-
+            Random rng = new Random();
+            int randomNumber = rng.Next(100);
         }
     }
 }
