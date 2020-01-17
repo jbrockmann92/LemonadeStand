@@ -10,7 +10,7 @@ namespace Lemonade
     {
         Player player = new Player();
         List<Day> days;
-        int currentDay;
+        int currentDay = 1;
         int lengthofGame = 3;
         Store store = new Store();
         Day day = new Day();
@@ -53,14 +53,37 @@ namespace Lemonade
 
         }
 
+        public void CheckProfitOrLoss()
+        {
+            if (player.wallet.money > 1000)
+            {
+                Console.WriteLine($"Your total profit is {1000 - player.wallet.money}");
+            }
+            if (player.wallet.money <= 1000)
+            {
+                Console.WriteLine($"Your total loss is {(player.wallet.money - 1000) * -1}");
+            }
+
+        }
+
+        public void WeatherForecast()
+        {
+            Console.WriteLine($"The forecast for tomorrow looks like {day.weather.predictedForecast}");
+            //Works for now, but this probably shows today's forecast, not tomorrow's
+        }
 
         public void PrintInventory()
         {
+            Console.WriteLine($"After day {currentDay}, here are the results:");
             Console.WriteLine($"You have {player.inventory.lemons.Count} lemons");
             Console.WriteLine($"You have {player.inventory.sugarCubes.Count} sugar cubes");
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
             Console.WriteLine($"You have {player.wallet.money} left");
+            CheckProfitOrLoss();
+            currentDay++;
+            WeatherForecast();
+            //might not be cleanest here, but works for now
         }
 
         public void AddMoney()
