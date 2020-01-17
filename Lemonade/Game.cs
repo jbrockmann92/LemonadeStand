@@ -58,7 +58,16 @@ namespace Lemonade
             Console.WriteLine($"You have {player.wallet.money} left");
         }
 
-        //NEED THIS! THIS IS HOW WE REMOVE ITEMS FROM THE LIST WHEN A CUSTOMER BUYS SOMETHING. NEEDS TO BE ADJUSTED FOR HOW MANY ARE IN THE RECIPE, BUT IT'S WORKING
+        public void AddMoney()
+        //Sinlge responsibility method for adding money to wallet after a sale
+        {
+            foreach (Cup cup in cupsSold)
+            {
+                player.wallet.money += player.recipe.pricePerCup;
+            }
+        }
+
+        //NEED THIS! THIS IS HOW WE REMOVE ITEMS FROM THE LIST WHEN A CUSTOMER BUYS SOMETHING.NEEDS TO BE ADJUSTED FOR HOW MANY ARE IN THE RECIPE, BUT IT'S WORKING
 
         public void DailyInventoryUsed(Player player)
         {
@@ -71,6 +80,7 @@ namespace Lemonade
             }
         }
 
+
         public void WillBuy()
         {
             //Something about if the total values from CalculateWeather() and Calculate
@@ -81,5 +91,6 @@ namespace Lemonade
             double totalCupsSold = day.weatherBuyValue / (20 * buyPrice);
             //I think this works. Seems unnecessarily complicated
         }
+
     }
 }
