@@ -8,10 +8,10 @@ namespace Lemonade
 {
     class Store
     {
-        double pricePerLemon = .35;
-        double pricePerSugarCube = .15;
-        double pricePerIceCube = .1;
-        double pricePerCup = .15;
+        double pricePerLemon = .035;
+        double pricePerSugarCube = .015;
+        double pricePerIceCube = .01;
+        double pricePerCup = .015;
 
         int moreLemons;
         int moreSugar;
@@ -26,7 +26,7 @@ namespace Lemonade
         {
             Console.WriteLine("Hello, welcome to the store.");
             PrintPrices();
-            BuyInventory(player);
+            CheckIfMoney(player);
         }
 
         public void PrintPrices()
@@ -36,6 +36,23 @@ namespace Lemonade
             Console.WriteLine($"Ice Cubes cost ${pricePerIceCube}");
             Console.WriteLine($"Cups cost ${pricePerCup}");
 
+        }
+
+        public void CheckIfMoney(Player player)
+            //Probably want to check before each individual item, not just the beginning of the store
+        {
+            if (player.wallet.money > 0)
+            {
+                BuyInventory(player);
+                AddLemons(player);
+                AddSugar(player);
+                AddIce(player);
+                AddCups(player);
+            }
+            else
+            {
+                Console.WriteLine("You don't have enough money!");
+            }
         }
 
         public void BuyInventory(Player player)
@@ -59,7 +76,7 @@ namespace Lemonade
 
         public void AddLemons(Player player)
         {
-            for (int i= 1; i < moreLemons; i++)
+            for (int i = 0; i < moreLemons; i++)
             {
                 Lemon lemon = new Lemon();
                 player.inventory.lemons.Add(lemon);
@@ -99,5 +116,4 @@ namespace Lemonade
             }
         }
     }
-    
 }

@@ -11,10 +11,10 @@ namespace Lemonade
         Player player = new Player();
         List<Day> days;
         int currentDay;
-        int lengthofGame = 7;
+        int lengthofGame = 3;
         Store store = new Store();
         Day day = new Day();
-        List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
+        List<Cup> cupsSold = new List<Cup>();
 
         public void Introduction()
         {
@@ -35,15 +35,21 @@ namespace Lemonade
 
         public void RunGame()
         {
-            for (int i = 0; i < lengthofGame; i++)
+            for (int i = 1; i < lengthofGame; i++)
             {
                 //Passing player into the GoToStore function. Player actually goes to store. Makes sense
                 store.GoToStore(player);
                 PrintInventory();
                 DailyInventoryUsed(player);
+                player.CreateRecipe();
+                player.SetPrice();
+                WillBuy();
+                AddMoney();
                 PrintInventory();
                 Console.ReadLine();
             }
+            Console.WriteLine("Game is over");
+            Console.ReadLine();
 
         }
 
@@ -54,6 +60,7 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.sugarCubes.Count} sugar cubes");
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
+            Console.WriteLine($"You have {player.wallet.money} left");
         }
 
         public void AddMoney()
@@ -86,8 +93,13 @@ namespace Lemonade
             day.CalcIngredientValues(player);
             //Add something here about calculating the price into the equation?
             double buyPrice = 1 - player.recipe.pricePerCup;
-            //I believe we are doing the price per cup in terms of cents, not numbers in 100
-            buyPrice *= 100;
+            double totalCupsSold = day.weatherBuyValue / (20 * buyPrice);
+            //I think this works. Seems unnecessarily complicated
+            for (int i = 0; i < totalCupsSold; i++)
+            {
+                Cup cup = new Cup();
+                cupsSold.Add(cup);
+            }
         }
         public void Sales()
         {
