@@ -98,8 +98,8 @@ namespace Lemonade
             {
                 Lemon lemon = new Lemon();
                 player.inventory.lemons.Add(lemon);
-                player.wallet.Money -= pricePerLemon * moreLemons;
             }
+            player.wallet.Money -= pricePerLemon * moreLemons;
         }
         //Have to put i=1 in this case, but i=0 in the others for some reason to get the same result
         //Seems like an error or i is holding its value at one or something when it moves to the next for loop
@@ -110,8 +110,8 @@ namespace Lemonade
             {
                 SugarCube sugar = new SugarCube();
                 player.inventory.sugarCubes.Add(sugar);
-                player.wallet.Money -= pricePerSugarCube * moreSugar;
             }
+            player.wallet.Money -= pricePerSugarCube * moreSugar;
         }
 
         public void AddIce(Player player)
@@ -120,8 +120,8 @@ namespace Lemonade
             {
                 IceCube ice = new IceCube();
                 player.inventory.iceCubes.Add(ice);
-                player.wallet.Money -= pricePerIceCube * moreIce;
             }
+            player.wallet.Money -= pricePerIceCube * moreIce;
         }
 
         public void AddCups(Player player)
@@ -130,8 +130,8 @@ namespace Lemonade
             {
                 Cup cup = new Cup();
                 player.inventory.cups.Add(cup);
-                player.wallet.Money -= pricePerCup * moreCups;
             }
+            player.wallet.Money -= pricePerCup * moreCups;
         }
     }
 }

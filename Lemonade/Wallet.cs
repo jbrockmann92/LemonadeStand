@@ -9,7 +9,7 @@ namespace Lemonade
     class Wallet
     {
         //Need to do some stuff with public and private / Get and Set here
-        private double money = 3;
+        private double money = 100;
 
         public double Money
         {
@@ -19,6 +19,7 @@ namespace Lemonade
             }
             set
             {
+                money = value;
                 if (value <= 0)
                 {
                     money = 0;

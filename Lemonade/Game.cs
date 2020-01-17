@@ -33,6 +33,7 @@ namespace Lemonade
                 WillBuy();
                 AddMoney();
                 Console.WriteLine($"After day {currentDay}, here are the results:");
+                CheckProfitOrLoss();
                 PrintInventory();
                 day.RandCondition();
                 Console.ReadLine();
@@ -46,13 +47,13 @@ namespace Lemonade
 
         public void CheckProfitOrLoss()
         {
-            if (player.wallet.Money > 1000)
+            if (player.wallet.Money > 100)
             {
-                Console.WriteLine($"Your total profit is {1000 - player.wallet.Money}");
+                Console.WriteLine($"Your total profit is {100 - player.wallet.Money}");
             }
-            if (player.wallet.Money <= 1000)
+            if (player.wallet.Money <= 100)
             {
-                Console.WriteLine($"Your total loss is {(player.wallet.Money - 1000) * -1}");
+                Console.WriteLine($"Your total loss is {(player.wallet.Money - 100) * -1}");
             }
 
         }
@@ -69,8 +70,7 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.sugarCubes.Count} sugar cubes");
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
-            Console.WriteLine($"You have {player.wallet.Money} left");
-            CheckProfitOrLoss();
+            Console.WriteLine($"You have ${player.wallet.Money} left");
             currentDay++;
             WeatherForecast();
         }

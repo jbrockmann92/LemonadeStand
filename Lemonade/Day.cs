@@ -8,6 +8,7 @@ namespace Lemonade
 {
     class Day
     {
+        //Weather is staying the same the whole time. Must be instantiating or randomizing in the wrong place.
         public Weather weather = new Weather();
         public List<Customer> customers = new List<Customer>();
         public int weatherBuyValue;
