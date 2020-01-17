@@ -14,7 +14,7 @@ namespace Lemonade
         int lengthofGame = 7;
         Store store = new Store();
         Day day = new Day();
-        //List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
+        List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
 
         public void Introduction()
         {
@@ -40,7 +40,7 @@ namespace Lemonade
                 //Passing player into the GoToStore function. Player actually goes to store. Makes sense
                 store.GoToStore(player);
                 PrintInventory();
-                //DailyInventoryUsed(player);
+                DailyInventoryUsed(player);
                 PrintInventory();
                 Console.ReadLine();
             }
@@ -58,22 +58,26 @@ namespace Lemonade
 
         //NEED THIS! THIS IS HOW WE REMOVE ITEMS FROM THE LIST WHEN A CUSTOMER BUYS SOMETHING. NEEDS TO BE ADJUSTED FOR HOW MANY ARE IN THE RECIPE, BUT IT'S WORKING
 
-        //public void DailyInventoryUsed(Player player)
-        //{
-        //    for (int i = 0; i < cupsSold.Count; i++)
-        //    {
-        //        player.inventory.lemons.RemoveAt(0);
-        //        player.inventory.sugarCubes.RemoveAt(0);
-        //        player.inventory.iceCubes.RemoveAt(0);
-        //        player.inventory.cups.RemoveAt(0);git pu
-        //    }
-        //}
+        public void DailyInventoryUsed(Player player)
+        {
+            for (int i = 0; i < cupsSold.Count; i++)
+            {
+                player.inventory.lemons.RemoveAt(0);
+                player.inventory.sugarCubes.RemoveAt(0);
+                player.inventory.iceCubes.RemoveAt(0);
+                player.inventory.cups.RemoveAt(0);
+            }
+        }
 
         public void WillBuy()
         {
             //Something about if the total values from CalculateWeather() and Calculate
             day.RandomizeWeather();
             day.CalcIngredientValues(player);
+            //Add something here about calculating the price into the equation?
+            double buyPrice = 1 - player.recipe.pricePerCup;
+            //I believe we are doing the price per cup in terms of cents, not numbers in 100
+            buyPrice *= 100;
         }
     }
 }
