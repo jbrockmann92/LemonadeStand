@@ -47,5 +47,15 @@ namespace Lemonade
                 customers.Add(customer);
             }
         }
+
+        public void CalcIngredientValues(Player player)
+        {
+            //Add recipe ingredient values together. Divide total by 20 and * 100 to get a number roughly between 20 and 100
+            int calculateTotalIngredients = player.recipeLemons + player.recipeSugarCubes + player.recipeIceCubes;
+            calculateTotalIngredients /= 20;
+            calculateTotalIngredients *= 20;
+        }
     }
 }
+
+
