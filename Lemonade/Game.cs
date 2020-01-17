@@ -25,19 +25,22 @@ namespace Lemonade
         {
             for (int i = 1; i < lengthofGame; i++)
             {
-                //Passing player into the GoToStore function. Player actually goes to store. Makes sense
                 store.GoToStore(player);
+                day.RandCondition();
                 PrintInventory();
                 DailyInventoryUsed(player);
-                player.CreateRecipe();
-                player.SetPrice();
+                player.RecipeAndPrice();
                 WillBuy();
                 AddMoney();
+                Console.WriteLine($"After day {currentDay}, here are the results:");
                 PrintInventory();
+                day.RandCondition();
                 Console.ReadLine();
             }
             Console.WriteLine("Game is over");
             Console.ReadLine();
+
+            //Doesn't actually sell things until day 2
 
         }
 
@@ -62,7 +65,6 @@ namespace Lemonade
 
         public void PrintInventory()
         {
-            Console.WriteLine($"After day {currentDay}, here are the results:");
             Console.WriteLine($"You have {player.inventory.lemons.Count} lemons");
             Console.WriteLine($"You have {player.inventory.sugarCubes.Count} sugar cubes");
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
@@ -71,7 +73,6 @@ namespace Lemonade
             CheckProfitOrLoss();
             currentDay++;
             WeatherForecast();
-            //might not be cleanest here, but works for now
         }
 
         public void AddMoney()
@@ -105,7 +106,6 @@ namespace Lemonade
             //Add something here about calculating the price into the equation?
             double buyPrice = 1 - player.recipe.pricePerCup;
             double totalCupsSold = day.weatherBuyValue / (20 * buyPrice);
-            //I think this works. Seems unnecessarily complicated
             for (int i = 0; i < totalCupsSold; i++)
             {
                 Cup cup = new Cup();

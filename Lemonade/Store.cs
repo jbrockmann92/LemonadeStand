@@ -8,10 +8,10 @@ namespace Lemonade
 {
     class Store
     {
-        double pricePerLemon = .035;
-        double pricePerSugarCube = .015;
-        double pricePerIceCube = .01;
-        double pricePerCup = .015;
+        double pricePerLemon = .30;
+        double pricePerSugarCube = .1;
+        double pricePerIceCube = .05;
+        double pricePerCup = .15;
 
         int moreLemons;
         int moreSugar;
@@ -40,21 +40,56 @@ namespace Lemonade
 
         public void BuyInventory(Player player)
         {
-            Console.WriteLine("How many Lemons would you like to buy?");
-            moreLemons = int.Parse(Console.ReadLine());
-            AddLemons(player);
+            if (player.wallet.Money >= 0)
+            {
+                Console.WriteLine("How many Lemons would you like to buy?");
+                moreLemons = int.Parse(Console.ReadLine());
+                if (player.wallet.Money > 0)
+                {
+                    AddLemons(player);
+                }
+                else
+                {
+                    Console.WriteLine("You're out of money!");
+                    return;
+                }
 
-            Console.WriteLine("How many Sugar Cubes would you like to buy?");
-            moreSugar = int.Parse(Console.ReadLine());
-            AddSugar(player);
+                Console.WriteLine("How many Sugar Cubes would you like to buy?");
+                moreSugar = int.Parse(Console.ReadLine());
+                if (player.wallet.Money > 0)
+                {
+                    AddSugar(player);
+                }
+                else
+                {
+                    Console.WriteLine("You're out of money!");
+                    return;
+                }
 
-            Console.WriteLine("How many Ice Cubes would you like to buy?");
-            moreIce = int.Parse(Console.ReadLine());
-            AddIce(player);
+                Console.WriteLine("How many Ice Cubes would you like to buy?");
+                moreIce = int.Parse(Console.ReadLine());
+                if (player.wallet.Money > 0)
+                {
+                    AddIce(player);
+                }
+                else
+                {
+                    Console.WriteLine("You're out of money!");
+                    return;
+                }
 
-            Console.WriteLine("How many cups would you like to buy?");
-            moreCups = int.Parse(Console.ReadLine());
-            AddCups(player);
+                Console.WriteLine("How many cups would you like to buy?");
+                moreCups = int.Parse(Console.ReadLine());
+                if (player.wallet.Money > 0)
+                {
+                    AddCups(player);
+                }
+                else
+                {
+                    Console.WriteLine("You're out of money!");
+                    return;
+                }
+            }
         }
 
         public void AddLemons(Player player)

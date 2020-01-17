@@ -13,6 +13,12 @@ namespace Lemonade
         public Wallet wallet = new Wallet();
         public Recipe recipe = new Recipe();
         public Pitcher pitcher = new Pitcher();
+
+        public void RecipeAndPrice()
+        {
+            CreateRecipe();
+            SetPrice();
+        }
         public void CreateRecipe()
 
         {
