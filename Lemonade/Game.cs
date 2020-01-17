@@ -13,7 +13,7 @@ namespace Lemonade
         int currentDay;
         int lengthofGame = 7;
         Store store = new Store();
-        //List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
+        List<Cup> cupsSold = new List<Cup>() { new Cup(), new Cup(), new Cup() };
 
         public void Introduction()
         {
@@ -52,17 +52,26 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
         }
 
-        //NEED THIS! THIS IS HOW WE REMOVE ITEMS FROM THE LIST WHEN A CUSTOMER BUYS SOMETHING. NEEDS TO BE ADJUSTED FOR HOW MANY ARE IN THE RECIPE, BUT IT'S WORKING
+        public void AddMoney()
+        //Sinlge responsibility method for adding money to wallet after a sale
+        {
+            foreach (Cup cup in cupsSold)
+            {
+                player.wallet.money += player.recipe.pricePerCup;
+            }
+        }
 
-        //public void DailyInventoryUsed(Player player)
-        //{
-        //    for (int i = 0; i < cupsSold.Count; i++)
-        //    {
-        //        player.inventory.lemons.RemoveAt(0);
-        //        player.inventory.sugarCubes.RemoveAt(0);
-        //        player.inventory.iceCubes.RemoveAt(0);
-        //        player.inventory.cups.RemoveAt(0);
-        //    }
-        //}
+        //NEED THIS! THIS IS HOW WE REMOVE ITEMS FROM THE LIST WHEN A CUSTOMER BUYS SOMETHING.NEEDS TO BE ADJUSTED FOR HOW MANY ARE IN THE RECIPE, BUT IT'S WORKING
+
+        public void DailyInventoryUsed(Player player)
+        {
+            for (int i = 0; i < cupsSold.Count; i++)
+            {
+                player.inventory.lemons.RemoveAt(0);
+                player.inventory.sugarCubes.RemoveAt(0);
+                player.inventory.iceCubes.RemoveAt(0);
+                player.inventory.cups.RemoveAt(0);
+            }
+        }
     }
 }

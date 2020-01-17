@@ -22,18 +22,22 @@ namespace Lemonade
             recipe = new Recipe();
             Console.WriteLine("How many Lemons in your recipe?");
             recipe.amountOfLemons = int.Parse(Console.ReadLine());
-            
+
 
             Console.WriteLine("How many Sugar Cubes in your recipe?");
             recipe.amountOfSugarCubes = int.Parse(Console.ReadLine());
-            
+
 
             Console.WriteLine("How many Ice Cubes in your recipe?");
             recipe.amountOfIceCubes = int.Parse(Console.ReadLine());
-
+        }
+        public void SetPrice()
+        {
             Console.WriteLine("Set your price per cup");
             recipe.pricePerCup = double.Parse(Console.ReadLine());
         }
+
+        
 
         //Still need to remove whatever items we use from our inventory. Different function or the same one?
     }
