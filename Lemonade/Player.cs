@@ -38,8 +38,6 @@ namespace Lemonade
         }
 
         
-
-        //Still need to remove whatever items we use from our inventory. Different function or the same one?
     }
     
 }

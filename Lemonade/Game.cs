@@ -89,6 +89,41 @@ namespace Lemonade
             //I believe we are doing the price per cup in terms of cents, not numbers in 100
             buyPrice *= 100;
         }
+        public void Sales()
+        {
+            if (player.inventory.cups.Count > 0)
+            {
+                Console.WriteLine("Made a sale!");
+            }
+            else
+            {
+                Console.WriteLine("Out of cups!");
+            }
+            if (player.inventory.lemons.Count > 0)
+            {
+                Console.WriteLine("Made a sale!");
+            }
+            else
+            {
+                Console.WriteLine("Out of lemons!");
+            }
+            if (player.inventory.sugarCubes.Count > 0)
+            {
+                Console.WriteLine("Made a sale!");
+            }
+            else
+            {
+                Console.WriteLine("Out of sugar cubes!");
+            }
+            if (player.inventory.iceCubes.Count > 0)
+            {
+                Console.WriteLine("Made a sale!");
+            }
+            else
+            {
+                Console.WriteLine("Out of ice cubes!");
+            }
+        }//needs to be done for every ingredient in recipe? i think yes
 
     }
 }
