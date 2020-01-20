@@ -38,7 +38,7 @@ namespace Lemonade
             Console.WriteLine("Game is over");
             Console.ReadLine();
         }
-        
+
         public void GameLength()
         {
             Console.WriteLine("How many days would you like to play for? You can choose up to 21 days.");
@@ -75,7 +75,7 @@ namespace Lemonade
             currentDay++;
             WeatherForecast();
         }
-        
+
         public void AddMoney()
         //Single responsibility method for adding money to wallet after a sale
         {

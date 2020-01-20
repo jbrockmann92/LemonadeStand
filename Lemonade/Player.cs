@@ -34,7 +34,11 @@ namespace Lemonade
                     if (recipe.amountOfLemons <= inventory.lemons.Count)
                     {
                         isValid = true;
+<<<<<<< HEAD
                         Console.WriteLine($" Added  {recipe.amountOfLemons} to recipe! ");
+=======
+                        Console.WriteLine($"Added {recipe.amountOfLemons} to recipe!");
+>>>>>>> 6799f11ff384a003567e46acc09b098c2c9de005
                     }
                     else
                     {
@@ -50,7 +54,11 @@ namespace Lemonade
                     if (recipe.amountOfSugarCubes <= inventory.sugarCubes.Count)
                     {
                         isValid = true;
+<<<<<<< HEAD
                         Console.WriteLine($" Added {recipe.amountOfSugarCubes} to recipe! ");
+=======
+                        Console.WriteLine($"Added {recipe.amountOfSugarCubes} to recipe!");
+>>>>>>> 6799f11ff384a003567e46acc09b098c2c9de005
                     }
                     else
                     {
@@ -65,7 +73,11 @@ namespace Lemonade
                     if (recipe.amountOfIceCubes <= inventory.iceCubes.Count)
                     {
                         isValid = true;
+<<<<<<< HEAD
                         Console.WriteLine($" Added {recipe.amountOfIceCubes} to recipe! ");
+=======
+                        Console.WriteLine($"Added {recipe.amountOfIceCubes} to recipe!");
+>>>>>>> 6799f11ff384a003567e46acc09b098c2c9de005
                     }
                     else
                     {
