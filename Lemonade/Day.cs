@@ -56,9 +56,9 @@ namespace Lemonade
 
         public void RandCustomer()
         {
-            //Need a for loop to go over the temperature and add a customer to the list for each degree
             //Matt can create a series of names in a list and we can choose from the list randomly for which name we want to use?
-            for (int i = 0; i < weather.temperature + 10; i++)
+            for (int i = 0; i < (weather.temperature + (weather.temperature / 7)); i++)
+                //Change number weather.temperature is divided by here to weight weather more heavily in the equation. Will create more customers
             {
                 Customer customer = new Customer();
                 customers.Add(customer);

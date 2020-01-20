@@ -11,7 +11,7 @@ namespace Lemonade
         static void Main(string[] args)
         {
             Game game = new Game();
-            game.Introduction();
+            UserInterface.DisplayIntroduction();
             game.RunGame();
         }
     }

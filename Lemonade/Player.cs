@@ -19,6 +19,9 @@ namespace Lemonade
             CreateRecipe();
             SetPrice();
         }
+
+        //Worth adjusting so lemons are more valuable in the weighting of the recipe? Or as they're closer to 2 per cup or something?
+        //Could be cool to do something like a bottle of lemon juice that costs like $50, but has $80 of lemons' worth in it
         public void CreateRecipe()
         {
             bool isValid = false;
@@ -31,7 +34,7 @@ namespace Lemonade
                     if (recipe.amountOfLemons <= inventory.lemons.Count)
                     {
                         isValid = true;
-                        Console.WriteLine(" Added " , recipe.amountOfLemons , " to recipe! ");
+                        Console.WriteLine($" Added  {recipe.amountOfLemons} to recipe! ");
                     }
                     else
                     {
@@ -47,7 +50,7 @@ namespace Lemonade
                     if (recipe.amountOfSugarCubes <= inventory.sugarCubes.Count)
                     {
                         isValid = true;
-                        Console.WriteLine(" Added " , recipe.amountOfSugarCubes , " to recipe! ");
+                        Console.WriteLine($" Added {recipe.amountOfSugarCubes} to recipe! ");
                     }
                     else
                     {
@@ -62,7 +65,7 @@ namespace Lemonade
                     if (recipe.amountOfIceCubes <= inventory.iceCubes.Count)
                     {
                         isValid = true;
-                        Console.WriteLine(" Added " , recipe.amountOfIceCubes , " to recipe! ");
+                        Console.WriteLine($" Added {recipe.amountOfIceCubes} to recipe! ");
                     }
                     else
                     {
@@ -79,12 +82,13 @@ namespace Lemonade
             while (isValid == false)
             {
                 Console.WriteLine("How much will you charge per cup?");
-                Console.WriteLine("Note: max price per cup is $5.00.");
+                Console.WriteLine("Note: max price per cup is $5.00. Remember, the lower you keep this number, the more likely people will be to buy your lemonade.");
                 recipe.pricePerCup = double.Parse(Console.ReadLine());
 
                 if (recipe.pricePerCup <= 5)
                 {
-                    Console.WriteLine(" You will be charging customers $", recipe.pricePerCup, " for a cup of lemonade. ");
+                    Console.WriteLine($" You will be charging customers ${recipe.pricePerCup} for a cup of lemonade. ");
+                    isValid = true;
                 }
                 else
                 {

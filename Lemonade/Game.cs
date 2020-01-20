@@ -16,16 +16,11 @@ namespace Lemonade
         Day day = new Day();
         List<Cup> cupsSold = new List<Cup>();
 
-        public void Introduction()
-        {
-            UserInterface.DisplayIntroduction();
-        }
-
         public void RunGame()
         {
             GameLength();
             day.RandTemperature();
-            for (int i = 1; i < lengthofGame; i++)
+            for (int i = 0; i < lengthofGame; i++)
             {
                 store.GoToStore(player);
                 day.RandCondition();
@@ -104,54 +99,34 @@ namespace Lemonade
             }
         }
 
-        //Single Responsibbility used here
+        //Single Responsibility used here
         public void WillBuy()
         {
             day.RandomizeWeather();
             day.CalcIngredientValues(player);
-            double buyPrice = 1 - player.recipe.pricePerCup;
+            double buyPrice = (5 - player.recipe.pricePerCup) / 5;
             double totalCupsSold = day.weatherBuyValue / (100 * buyPrice);
             for (int i = 0; i < totalCupsSold; i++)
             {
                 Cup cup = new Cup();
-                cupsSold.Add(cup);
+                if (player.inventory.lemons.Count > cupsSold.Count && player.inventory.sugarCubes.Count > cupsSold.Count && player.inventory.iceCubes.Count > cupsSold.Count && player.inventory.cups.Count > cupsSold.Count)
+                {
+                    cupsSold.Add(cup);
+                    Sales();
+                }
             }
         }
         
         //This is the validation for the issue above in DailyInventoryUsed() if the sales are more than the inventory.
         public void Sales()
         {
-            if (player.inventory.cups.Count > 0)
+            if (player.inventory.cups.Count > 0 && player.inventory.lemons.Count > 0 && player.inventory.sugarCubes.Count > 0 && player.inventory.iceCubes.Count > 0)
             {
                 Console.WriteLine("Made a sale!");
             }
             else
             {
-                Console.WriteLine("Out of cups!");
-            }
-            if (player.inventory.lemons.Count > 0)
-            {
-                Console.WriteLine("Made a sale!");
-            }
-            else
-            {
-                Console.WriteLine("Out of lemons!");
-            }
-            if (player.inventory.sugarCubes.Count > 0)
-            {
-                Console.WriteLine("Made a sale!");
-            }
-            else
-            {
-                Console.WriteLine("Out of sugar cubes!");
-            }
-            if (player.inventory.iceCubes.Count > 0)
-            {
-                Console.WriteLine("Made a sale!");
-            }
-            else
-            {
-                Console.WriteLine("Out of ice cubes!");
+                Console.WriteLine("Out of an item in your inventory to make lemonade!");
             }
         }//needs to be done for every ingredient in recipe? i think yes
 
