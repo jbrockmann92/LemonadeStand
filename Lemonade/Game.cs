@@ -10,7 +10,7 @@ namespace Lemonade
     {
         Player player = new Player();
         List<Day> days;
-        int currentDay = 1;
+        int currentDay = 0;
         int lengthofGame = 3;
         Store store = new Store();
         Day day = new Day();

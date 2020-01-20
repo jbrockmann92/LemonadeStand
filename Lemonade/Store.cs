@@ -40,54 +40,61 @@ namespace Lemonade
 
         public void BuyInventory(Player player)
         {
-            if (player.wallet.Money >= 0)
+            bool isValid = false;
+            while(isValid == false)
             {
-                Console.WriteLine("How many Lemons would you like to buy?");
-                moreLemons = int.Parse(Console.ReadLine());
-                if (player.wallet.Money > 0)
+                if (player.wallet.Money >= 0)
                 {
-                    AddLemons(player);
-                }
-                else
-                {
-                    Console.WriteLine("You're out of money!");
-                    return;
-                }
+                    Console.WriteLine("How many Lemons would you like to buy?");
+                    moreLemons = int.Parse(Console.ReadLine());
+                    if (player.wallet.Money >= pricePerLemon * moreLemons)
+                    {
+                        isValid = true;
+                        AddLemons(player);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You can't afford that!");
+                        return;
+                    }
+                    Console.WriteLine("How many Sugar Cubes would you like to buy?");
+                    moreSugar = int.Parse(Console.ReadLine());
+                    if (player.wallet.Money >= pricePerSugarCube * moreSugar)
+                    {
+                        isValid = true;
+                        AddSugar(player);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You're out of money!");
+                        return;
+                    }
 
-                Console.WriteLine("How many Sugar Cubes would you like to buy?");
-                moreSugar = int.Parse(Console.ReadLine());
-                if (player.wallet.Money > 0)
-                {
-                    AddSugar(player);
-                }
-                else
-                {
-                    Console.WriteLine("You're out of money!");
-                    return;
-                }
+                    Console.WriteLine("How many Ice Cubes would you like to buy?");
+                    moreIce = int.Parse(Console.ReadLine());
+                    if (player.wallet.Money >= pricePerIceCube * moreIce)
+                    {
+                        isValid = true;
+                        AddIce(player);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You can't afford that!");
+                        return;
+                    }
 
-                Console.WriteLine("How many Ice Cubes would you like to buy?");
-                moreIce = int.Parse(Console.ReadLine());
-                if (player.wallet.Money > 0)
-                {
-                    AddIce(player);
-                }
-                else
-                {
-                    Console.WriteLine("You're out of money!");
-                    return;
-                }
-
-                Console.WriteLine("How many cups would you like to buy?");
-                moreCups = int.Parse(Console.ReadLine());
-                if (player.wallet.Money > 0)
-                {
-                    AddCups(player);
-                }
-                else
-                {
-                    Console.WriteLine("You're out of money!");
-                    return;
+                    Console.WriteLine("How many cups would you like to buy?");
+                    moreCups = int.Parse(Console.ReadLine());
+                    if (player.wallet.Money >= pricePerCup * moreCups)
+                    {
+                        isValid = true;
+                        AddCups(player);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You can't afford that!");
+                        return;
+                    }
                 }
             }
         }
