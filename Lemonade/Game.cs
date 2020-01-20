@@ -11,8 +11,7 @@ namespace Lemonade
         Player player = new Player();
         List<Day> days;
         int currentDay = 0;
-        int lengthofGame = 7;
-
+        int lengthofGame;
         Store store = new Store();
         Day day = new Day();
         List<Cup> cupsSold = new List<Cup>();
@@ -24,6 +23,8 @@ namespace Lemonade
 
         public void RunGame()
         {
+            GameLength();
+            day.RandTemperature();
             for (int i = 1; i < lengthofGame; i++)
             {
                 store.GoToStore(player);
@@ -42,17 +43,24 @@ namespace Lemonade
             Console.WriteLine("Game is over");
             Console.ReadLine();
         }
+        
+        public void GameLength()
+        {
+            Console.WriteLine("How many days would you like to play for? You can choose up to 21 days.");
+            lengthofGame = int.Parse(Console.ReadLine());
+        }
 
         public void CheckProfitOrLoss()
         {
+            //Need to print only to two digits. Anywhere with money
             Console.WriteLine($"You sold a total of {cupsSold.Count} cups");
             if (player.wallet.Money > 100)
             {
-                Console.WriteLine($"Your total profit is ${(100 - player.wallet.Money) * -1}");
+                Console.WriteLine($"Your total profit is ${Math.Round((100 - player.wallet.Money) * -1)}");
             }
             if (player.wallet.Money <= 100)
             {
-                Console.WriteLine($"Your total loss is ${player.wallet.Money - 100}");
+                Console.WriteLine($"Your total loss is ${Math.Round(player.wallet.Money - 100)}");
             }
 
         }
@@ -68,13 +76,13 @@ namespace Lemonade
             Console.WriteLine($"You have {player.inventory.sugarCubes.Count} sugar cubes");
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
-            Console.WriteLine($"You have ${player.wallet.Money} left");
+            Console.WriteLine($"You have ${Math.Round(player.wallet.Money, 5)} left");
             currentDay++;
             WeatherForecast();
         }
-
+        
         public void AddMoney()
-        //Sinlge responsibility method for adding money to wallet after a sale
+        //Single responsibility method for adding money to wallet after a sale
         {
             foreach (Cup cup in cupsSold)
             {
@@ -96,7 +104,7 @@ namespace Lemonade
             }
         }
 
-
+        //Single Responsibbility used here
         public void WillBuy()
         {
             day.RandomizeWeather();

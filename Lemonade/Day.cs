@@ -22,9 +22,9 @@ namespace Lemonade
 
         public void RandCondition()
         {
-            Random rnd = new Random();
+            Random random = new Random();
             
-            weather.predictedForecast = weather.weatherConditions[rnd.Next(5)];
+            weather.predictedForecast = weather.weatherConditions[random.Next(5)];
             if (weather.predictedForecast == "Sunny")
             {
                 weatherBuyValue = 100;
@@ -47,11 +47,11 @@ namespace Lemonade
             }
         }
 
+        //Added RandTempterature() in line with OCP, rather than adding it to the RandCondition() function
         public void RandTemperature()
         {
             Random rnd = new Random();
             weather.temperature = rnd.Next(30, 105);
-            //Need to assign values to each of the weather variables
         }
 
         public void RandCustomer()

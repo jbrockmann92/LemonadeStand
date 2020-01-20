@@ -8,8 +8,8 @@ namespace Lemonade
 {
     class Store
     {
-        double pricePerLemon = .30;
-        double pricePerSugarCube = .1;
+        double pricePerLemon = .2;
+        double pricePerSugarCube = .05;
         double pricePerIceCube = .05;
         double pricePerCup = .15;
 
@@ -108,8 +108,6 @@ namespace Lemonade
             }
             player.wallet.Money -= pricePerLemon * moreLemons;
         }
-        //Have to put i=1 in this case, but i=0 in the others for some reason to get the same result
-        //Seems like an error or i is holding its value at one or something when it moves to the next for loop
 
         public void AddSugar(Player player)
         {
