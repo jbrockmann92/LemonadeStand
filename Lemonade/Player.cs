@@ -20,23 +20,78 @@ namespace Lemonade
             SetPrice();
         }
         public void CreateRecipe()
-
         {
-            Console.WriteLine("How many Lemons in your recipe?");
-            recipe.amountOfLemons = int.Parse(Console.ReadLine());
+            bool isValid = false;
+            while(isValid == false)
+            {
+                if (inventory.lemons.Count > 0)
+                {
+                    Console.WriteLine("How many Lemons in your recipe?");
+                    recipe.amountOfLemons = int.Parse(Console.ReadLine());
+                    if (recipe.amountOfLemons <= inventory.lemons.Count)
+                    {
+                        isValid = true;
+                        Console.WriteLine(" Added " , recipe.amountOfLemons , " to recipe! ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fresh out of Lemons!");
+                        return;   
+                    }
 
+                }
+                if (inventory.sugarCubes.Count > 0)
+                {
+                    Console.WriteLine("How many sugar cubes in your recipe?");
+                    recipe.amountOfSugarCubes = int.Parse(Console.ReadLine());
+                    if (recipe.amountOfSugarCubes <= inventory.sugarCubes.Count)
+                    {
+                        isValid = true;
+                        Console.WriteLine(" Added " , recipe.amountOfSugarCubes , " to recipe! ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fresh out of sugar cubes!");
+                        return;
+                    }
+                }
+                if (inventory.iceCubes.Count > 0)
+                {
+                    Console.WriteLine("How many ice cubes in your recipe?");
+                    recipe.amountOfIceCubes = int.Parse(Console.ReadLine());
+                    if (recipe.amountOfIceCubes <= inventory.iceCubes.Count)
+                    {
+                        isValid = true;
+                        Console.WriteLine(" Added " , recipe.amountOfIceCubes , " to recipe! ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fresh out of ice cubes!");
+                        return;
+                    }
+                }
+            }
 
-            Console.WriteLine("How many Sugar Cubes in your recipe?");
-            recipe.amountOfSugarCubes = int.Parse(Console.ReadLine());
-
-
-            Console.WriteLine("How many Ice Cubes in your recipe?");
-            recipe.amountOfIceCubes = int.Parse(Console.ReadLine());
         }
         public void SetPrice()
         {
-            Console.WriteLine("Set your price per cup");
-            recipe.pricePerCup = double.Parse(Console.ReadLine());
+            bool isValid = false;
+            while (isValid == false)
+            {
+                Console.WriteLine("How much will you charge per cup?");
+                Console.WriteLine("Note: max price per cup is $5.00.");
+                recipe.pricePerCup = double.Parse(Console.ReadLine());
+
+                if (recipe.pricePerCup <= 5)
+                {
+                    Console.WriteLine(" You will be charging customers $", recipe.pricePerCup, " for a cup of lemonade. ");
+                }
+                else
+                {
+                    Console.WriteLine("Please enter less than or equal to $5!");
+                    return;
+                }
+            }
         }
 
         

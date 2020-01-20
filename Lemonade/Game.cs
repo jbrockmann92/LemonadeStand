@@ -101,7 +101,7 @@ namespace Lemonade
         {
             day.RandomizeWeather();
             day.CalcIngredientValues(player);
-            double buyPrice = 1 - player.recipe.pricePerCup;
+            double buyPrice = (5 - player.recipe.pricePerCup) / 5;
             double totalCupsSold = day.weatherBuyValue / (100 * buyPrice);
             for (int i = 0; i < totalCupsSold; i++)
             {
