@@ -43,6 +43,7 @@ namespace Lemonade
 
         {
             Console.WriteLine("How many days would you like to play for? You can choose up to 21 days.");
+<<<<<<< HEAD
             int tempLengthofGame = int.Parse(Console.ReadLine());
             if (tempLengthofGame < 22)
             {
@@ -51,6 +52,16 @@ namespace Lemonade
             else
             {
                 Console.WriteLine("Please try again. The game can only be up to 21 days long");
+=======
+            int templengthofGame = int.Parse(Console.ReadLine());
+            if (templengthofGame < 22)
+            {
+                lengthofGame = templengthofGame;
+            }
+            else
+            {
+                Console.WriteLine("Please try again. The game can onlt be up to 21 days long");
+>>>>>>> 519aa4c955a37748c531cdb7410454e6ccb23673
                 GameLength();
             }
         }

@@ -50,7 +50,10 @@ namespace Lemonade
                     {
                         isValid = true;
                         Console.WriteLine($"Added {recipe.amountOfSugarCubes} to recipe!");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 519aa4c955a37748c531cdb7410454e6ccb23673
                     }
                     else
                     {
