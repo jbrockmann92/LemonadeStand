@@ -40,9 +40,19 @@ namespace Lemonade
         }
 
         public void GameLength()
+
         {
             Console.WriteLine("How many days would you like to play for? You can choose up to 21 days.");
-            lengthofGame = int.Parse(Console.ReadLine());
+            int tempLengthofGame = int.Parse(Console.ReadLine());
+            if (tempLengthofGame < 22)
+            {
+                lengthofGame = tempLengthofGame;
+            }
+            else
+            {
+                Console.WriteLine("Please try again. The game can only be up to 21 days long");
+                GameLength();
+            }
         }
 
         public void CheckProfitOrLoss()
@@ -52,6 +62,7 @@ namespace Lemonade
             if (player.wallet.Money > 100)
             {
                 Console.WriteLine($"Your total profit is ${Math.Round((100 - player.wallet.Money) * -1)}");
+                //Rounding isn't exactly working. Not sure why. Maybe I'm using it wrong
             }
             if (player.wallet.Money <= 100)
             {
@@ -63,16 +74,35 @@ namespace Lemonade
         public void WeatherForecast()
         {
             Console.WriteLine($"The forecast for tomorrow looks like {day.weather.predictedForecast}, with a temperature of {day.weather.temperature} degrees");
+            if (day.weatherBuyValue < 50)
+            {
+                Console.WriteLine("Poor selling conditions...");
+            }
+            else if (day.weatherBuyValue > 51 && day.weatherBuyValue < 100)
+            {
+                Console.WriteLine("Fair selling conditions");
+            }
+            else if (day.weatherBuyValue > 101 && day.weatherBuyValue < 150)
+            {
+                Console.WriteLine("Good selling conditions!");
+            }
+            else
+            {
+                Console.WriteLine("Fantastic selling conditions!!");
+            }
+            Console.WriteLine("");
         }
 
         public void PrintInventory()
         {
+            Console.WriteLine("");
             Console.WriteLine($"You have {player.inventory.lemons.Count} lemons");
             Console.WriteLine($"You have {player.inventory.sugarCubes.Count} sugar cubes");
             Console.WriteLine($"You have {player.inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"You have {player.inventory.cups.Count} cups");
             Console.WriteLine($"You have ${Math.Round(player.wallet.Money, 5)} left");
             currentDay++;
+            Console.WriteLine("");
             WeatherForecast();
         }
 

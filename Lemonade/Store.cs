@@ -25,6 +25,7 @@ namespace Lemonade
         public void GoToStore(Player player)
         {
             Console.WriteLine("Hello, welcome to the store.");
+            Console.WriteLine("----------------------------");
             PrintPrices();
             BuyInventory(player);
         }
@@ -35,7 +36,7 @@ namespace Lemonade
             Console.WriteLine($"Sugar Cubes cost ${pricePerSugarCube}");
             Console.WriteLine($"Ice Cubes cost ${pricePerIceCube}");
             Console.WriteLine($"Cups cost ${pricePerCup}");
-
+            Console.WriteLine("-----------------------------");
         }
 
         public void BuyInventory(Player player)
