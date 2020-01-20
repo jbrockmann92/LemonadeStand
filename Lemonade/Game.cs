@@ -10,8 +10,8 @@ namespace Lemonade
     {
         Player player = new Player();
         List<Day> days;
-        int currentDay = 1;
-        int lengthofGame = 3;
+        int currentDay = 0;
+        int lengthofGame = 7;
         Store store = new Store();
         Day day = new Day();
         List<Cup> cupsSold = new List<Cup>();
@@ -28,9 +28,9 @@ namespace Lemonade
                 store.GoToStore(player);
                 day.RandCondition();
                 PrintInventory();
-                DailyInventoryUsed(player);
                 player.RecipeAndPrice();
                 WillBuy();
+                DailyInventoryUsed(player);
                 AddMoney();
                 Console.WriteLine($"After day {currentDay}, here are the results:");
                 CheckProfitOrLoss();
@@ -40,28 +40,25 @@ namespace Lemonade
             }
             Console.WriteLine("Game is over");
             Console.ReadLine();
-
-            //Doesn't actually sell things until day 2
-
         }
 
         public void CheckProfitOrLoss()
         {
+            Console.WriteLine($"You sold a total of {cupsSold.Count} cups");
             if (player.wallet.Money > 100)
             {
-                Console.WriteLine($"Your total profit is {100 - player.wallet.Money}");
+                Console.WriteLine($"Your total profit is ${(100 - player.wallet.Money) * -1}");
             }
             if (player.wallet.Money <= 100)
             {
-                Console.WriteLine($"Your total loss is {(player.wallet.Money - 100) * -1}");
+                Console.WriteLine($"Your total loss is ${player.wallet.Money - 100}");
             }
 
         }
 
         public void WeatherForecast()
         {
-            Console.WriteLine($"The forecast for tomorrow looks like {day.weather.predictedForecast}");
-            //Works for now, but this probably shows today's forecast, not tomorrow's
+            Console.WriteLine($"The forecast for tomorrow looks like {day.weather.predictedForecast}, with a temperature of {day.weather.temperature} degrees");
         }
 
         public void PrintInventory()
@@ -84,12 +81,13 @@ namespace Lemonade
             }
         }
 
-        //NEED THIS! THIS IS HOW WE REMOVE ITEMS FROM THE LIST WHEN A CUSTOMER BUYS SOMETHING.NEEDS TO BE ADJUSTED FOR HOW MANY ARE IN THE RECIPE, BUT IT'S WORKING
-
         public void DailyInventoryUsed(Player player)
         {
             for (int i = 0; i < cupsSold.Count; i++)
             {
+                //Second time through, cupsSold is higher than our total inventory. Just a good sales day apparently. Need validation here. 
+                //Need to re-work the numbers. Selling too many cups and not making enough money. Each cup ends up costing like $1. Bad business model.
+                //Could be fixed by using Pitcher Class
                 player.inventory.lemons.RemoveAt(0);
                 player.inventory.sugarCubes.RemoveAt(0);
                 player.inventory.iceCubes.RemoveAt(0);
@@ -100,18 +98,18 @@ namespace Lemonade
 
         public void WillBuy()
         {
-            //Something about if the total values from CalculateWeather() and Calculate
             day.RandomizeWeather();
             day.CalcIngredientValues(player);
-            //Add something here about calculating the price into the equation?
             double buyPrice = 1 - player.recipe.pricePerCup;
-            double totalCupsSold = day.weatherBuyValue / (20 * buyPrice);
+            double totalCupsSold = day.weatherBuyValue / (100 * buyPrice);
             for (int i = 0; i < totalCupsSold; i++)
             {
                 Cup cup = new Cup();
                 cupsSold.Add(cup);
             }
         }
+        
+        //This is the validation for the issue above in DailyInventoryUsed() if the sales are more than the inventory.
         public void Sales()
         {
             if (player.inventory.cups.Count > 0)
