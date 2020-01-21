@@ -17,10 +17,6 @@ namespace Lemonade
         int moreSugar;
         int moreIce;
         int moreCups;
-
-        //Need a method here to bring the Player into the store. Need to run right after amount of days to play is declared,
-        //and after each day. Possibly optional
-
         //Do Single Responsibility Here in GoToStore function
         public void GoToStore(Player player)
         {
@@ -41,6 +37,7 @@ namespace Lemonade
 
         public void BuyInventory(Player player)
         {
+            Console.WriteLine($"You currently have ${player.wallet.Money} to spend");
             bool isValid = false;
             while(isValid == false)
             {
@@ -56,7 +53,7 @@ namespace Lemonade
                     else
                     {
                         Console.WriteLine("You can't afford that!");
-                        return;
+                        BuyInventory(player);
                     }
                     Console.WriteLine("How many Sugar Cubes would you like to buy?");
                     moreSugar = int.Parse(Console.ReadLine());
@@ -68,7 +65,7 @@ namespace Lemonade
                     else
                     {
                         Console.WriteLine("You're out of money!");
-                        return;
+                        BuyInventory(player);
                     }
 
                     Console.WriteLine("How many Ice Cubes would you like to buy?");
@@ -81,7 +78,7 @@ namespace Lemonade
                     else
                     {
                         Console.WriteLine("You can't afford that!");
-                        return;
+                        BuyInventory(player);
                     }
 
                     Console.WriteLine("How many cups would you like to buy?");
@@ -94,7 +91,7 @@ namespace Lemonade
                     else
                     {
                         Console.WriteLine("You can't afford that!");
-                        return;
+                        BuyInventory(player);
                     }
                 }
             }

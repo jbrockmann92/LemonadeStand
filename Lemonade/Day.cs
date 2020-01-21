@@ -8,7 +8,6 @@ namespace Lemonade
 {
     class Day
     {
-        //Weather is staying the same the whole time. Must be instantiating or randomizing in the wrong place.
         public Weather weather = new Weather();
         public List<Customer> customers = new List<Customer>();
         public int weatherBuyValue;
@@ -56,9 +55,8 @@ namespace Lemonade
 
         public void RandCustomer()
         {
-            //Matt can create a series of names in a list and we can choose from the list randomly for which name we want to use?
             for (int i = 0; i < (weather.temperature + (weather.temperature / 7)); i++)
-                //Change number weather.temperature is divided by here to weight weather more heavily in the equation. Will create more customers
+                //Change number weather.temperature is divided by here to weight weather more heavily in the equation. Will create more customers.
             {
                 Customer customer = new Customer();
                 customers.Add(customer);
@@ -71,7 +69,6 @@ namespace Lemonade
             //Add recipe ingredient values together. Divide total by 20 and * 100 to get a number roughly between 20 and 100
             int calculateTotalIngredients = player.recipe.amountOfLemons + player.recipe.amountOfSugarCubes + player.recipe.amountOfIceCubes;
             calculateTotalIngredients /= 2;
-            //Trying to get this to play with Game class to Buy function that will add cups to the list of Cups there 
             weatherBuyValue += calculateTotalIngredients;
         }
     }

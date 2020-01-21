@@ -31,49 +31,69 @@ namespace Lemonade
             if (oneOrTwoPlayer == 2 && humanOrComputer == 2)
             {
                 Names();
-            }
-            for (int i = 0; i < lengthofGame; i++)
-            {
-                currentDay++;
-                store.GoToStore(player);
-                day.RandCondition();
-                player.DeclareInventory();
-                WeatherForecast();
-                player.RecipeAndPrice();
-                WillBuy(player);
-                DailyInventoryUsed(player);
-                player.AddMoney(player);
-                Console.WriteLine($"After day {i + 1}, here are {player.name}'s results:");
-                player.CheckProfitOrLoss(player);
-                player.DeclareInventory();
-                day.RandCondition();
-                Console.ReadLine();
-                Console.Clear();
-                if (oneOrTwoPlayer == 2 && humanOrComputer == 1)
+                if (oneOrTwoPlayer == 1)
                 {
-                    Console.WriteLine("You've chosen a 2-player game. It's Player 2's turn");
-                    for (int j = 0; j < lengthofGame; j++)
+                    for (int i = 0; i < lengthofGame; i++)
                     {
-                        Console.WriteLine("Player 2's turn");
-                        store.GoToStore(player2);
+                        GameLength();
+                        store.GoToStore(player);
                         day.RandCondition();
-                        player2.DeclareInventory();
-                        player2.RecipeAndPrice();
-                        WillBuy(player2);
-                        DailyInventoryUsed(player2);
-                        player2.AddMoney(player2);
-                        Console.WriteLine($"After day {i + 1}, here are {player2.name}'s results:");
-                        player2.CheckProfitOrLoss(player2);
-                        player2.DeclareInventory();
+                        player.DeclareInventory();
+                        WeatherForecast();
+                        player.RecipeAndPrice();
+                        WillBuy(player);
+                        DailyInventoryUsed(player);
+                        player.AddMoney(player);
+                        Console.WriteLine($"After day {currentDay}, here are your results:");
+                        player.CheckProfitOrLoss(player);
+                        player.DeclareInventory();
+                        currentDay++;
+                        day.RandCondition();
                         Console.ReadLine();
-                        Console.Clear();
-                        //currentday++ is getting in the way, otherwise I could make only player 2's stuff in the else if statement
                     }
-                    WhichWon();
                 }
-                else if (oneOrTwoPlayer == 2 && humanOrComputer == 2)
+                for (int i = 0; i < lengthofGame; i++)
                 {
-                    //Not working here. Goes through this loop 3 times, then allows player 1 to take their turns. Will do 3x3 if we choose 3 days
+                    currentDay++;
+                    store.GoToStore(player);
+                    day.RandCondition();
+                    player.DeclareInventory();
+                    WeatherForecast();
+                    player.RecipeAndPrice();
+                    WillBuy(player);
+                    DailyInventoryUsed(player);
+                    player.AddMoney(player);
+                    Console.WriteLine($"After day {i + 1}, here are {player.name}'s results:");
+                    player.CheckProfitOrLoss(player);
+                    player.DeclareInventory();
+                    day.RandCondition();
+                    Console.ReadLine();
+                    Console.Clear();
+                    if (oneOrTwoPlayer == 2 && humanOrComputer == 1)
+                    {
+                        Console.WriteLine("You've chosen a 2-player game. It's Player 2's turn");
+                        for (int j = 0; j < lengthofGame; j++)
+                        {
+                            Console.WriteLine("Player 2's turn");
+                            store.GoToStore(player2);
+                            day.RandCondition();
+                            player2.DeclareInventory();
+                            player2.RecipeAndPrice();
+                            WillBuy(player2);
+                            DailyInventoryUsed(player2);
+                            player2.AddMoney(player2);
+                            Console.WriteLine($"After day {i + 1}, here are {player2.name}'s results:");
+                            player2.CheckProfitOrLoss(player2);
+                            player2.DeclareInventory();
+                            Console.ReadLine();
+                            Console.Clear();
+                            //currentday++ is getting in the way, otherwise I could make only player 2's stuff in the else if statement
+                        }
+                        WhichWon();
+                    }
+                    else if (oneOrTwoPlayer == 2 && humanOrComputer == 2)
+                    {
+                        //Not working here. Goes through this loop 3 times, then allows player 1 to take their turns. Will do 3x3 if we choose 3 days
                         computer.AddInventory();
                         computer.MakeRecipe();
                         WillBuy(computer);
@@ -82,18 +102,20 @@ namespace Lemonade
                         Console.WriteLine($"After day {i + 1}, here are the computer's results:");
                         computer.DeclareInventory();
                         //Probably won't work yet. still need to create computer's recipe
-                    
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not a valid input. Please try again!");
+                        OneOrTwoPlayer();
+                    }
+                    //Probably a cleaner way to do this. Right now I've copied a lot of code. Try to have only the second player code in the else if statement
                 }
-                else
-                {
-                    Console.WriteLine("Not a valid input. Please try again!");
-                    OneOrTwoPlayer();
-                }
-                //Probably a cleaner way to do this. Right now I've copied a lot of code. Try to have only the second player code in the else if statement
+
+                Console.WriteLine("Game is over");
+                WhichWon();
+                Console.ReadLine();
             }
-            Console.WriteLine("Game is over");
-            WhichWon();
-            Console.ReadLine();
         }
         public void OneOrTwoPlayer()
         {
@@ -115,16 +137,14 @@ namespace Lemonade
         {
             Console.WriteLine("Would you like to play with two human players, or play against a computer player? Press 1 for human and 2 for computer.");
             humanOrComputer = int.Parse(Console.ReadLine());
-
         }
-
         public void GameLength()
 
         {
             Console.WriteLine("How many days would you like to play for? You can choose up to 21 days.");
 
             int tempLengthofGame = int.Parse(Console.ReadLine());
-            if (tempLengthofGame < 22)
+            if (tempLengthofGame > 0 && tempLengthofGame < 22)
             {
                 lengthofGame = tempLengthofGame;
             }
@@ -185,9 +205,6 @@ namespace Lemonade
         {
             for (int i = 0; i < player.cupsSold.Count; i++)
             {
-                //Second time through, cupsSold is higher than our total inventory. Just a good sales day apparently. Need validation here. 
-                //Need to re-work the numbers. Selling too many cups and not making enough money. Each cup ends up costing like $1. Bad business model.
-                //Could be fixed by using Pitcher Class
                 player.inventory.lemons.RemoveAt(0);
                 player.inventory.sugarCubes.RemoveAt(0);
                 player.inventory.iceCubes.RemoveAt(0);
@@ -215,6 +232,7 @@ namespace Lemonade
 
         //This is the validation for the issue above in DailyInventoryUsed() if the sales are more than the inventory.
         public void Sales(Player player)
+
         {
             if (player.inventory.cups.Count > 0 && player.inventory.lemons.Count > 0 && player.inventory.sugarCubes.Count > 0 && player.inventory.iceCubes.Count > 0)
             {
@@ -224,7 +242,8 @@ namespace Lemonade
             {
                 Console.WriteLine("Out of an item in your inventory to make lemonade!");
             }
-        }//needs to be done for every ingredient in recipe? i think yes
+        }
     }
 }
+
 
