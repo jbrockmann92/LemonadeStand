@@ -17,10 +17,6 @@ namespace Lemonade
         int moreSugar;
         int moreIce;
         int moreCups;
-
-        //Need a method here to bring the Player into the store. Need to run right after amount of days to play is declared,
-        //and after each day. Possibly optional
-
         //Do Single Responsibility Here in GoToStore function
         public void GoToStore(Player player)
         {

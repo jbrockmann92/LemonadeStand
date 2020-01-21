@@ -20,8 +20,6 @@ namespace Lemonade
             SetPrice();
         }
 
-        //Worth adjusting so lemons are more valuable in the weighting of the recipe? Or as they're closer to 2 per cup or something?
-        //Could be cool to do something like a bottle of lemon juice that costs like $50, but has $80 of lemons' worth in it
         public void CreateRecipe()
         {
             bool isValid = false;
@@ -50,10 +48,6 @@ namespace Lemonade
                     {
                         isValid = true;
                         Console.WriteLine($"Added {recipe.amountOfSugarCubes} to recipe!");
-<<<<<<< HEAD
-
-=======
->>>>>>> 519aa4c955a37748c531cdb7410454e6ccb23673
                     }
                     else
                     {
