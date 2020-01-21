@@ -56,7 +56,7 @@ namespace Lemonade
         public void RandCustomer()
         {
             for (int i = 0; i < (weather.temperature + (weather.temperature / 7)); i++)
-                //Change number weather.temperature is divided by here to weight weather more heavily in the equation. Will create more customers.
+             //Change number weather.temperature is divided by here to weight weather more heavily in the equation. Will create more customers.
             {
                 Customer customer = new Customer();
                 customers.Add(customer);
@@ -66,7 +66,6 @@ namespace Lemonade
 
         public void CalcIngredientValues(Player player)
         {
-            //Add recipe ingredient values together. Divide total by 20 and * 100 to get a number roughly between 20 and 100
             int calculateTotalIngredients = player.recipe.amountOfLemons + player.recipe.amountOfSugarCubes + player.recipe.amountOfIceCubes;
             calculateTotalIngredients /= 2;
             weatherBuyValue += calculateTotalIngredients;

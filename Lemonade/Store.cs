@@ -17,11 +17,11 @@ namespace Lemonade
         int moreSugar;
         int moreIce;
         int moreCups;
-        //Do Single Responsibility Here in GoToStore function
+
         public void GoToStore(Player player)
         {
             Console.WriteLine($"Hello {player.name}, welcome to the store.");
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("-------------------------------");
             PrintPrices();
             BuyInventory(player);
         }
@@ -32,7 +32,7 @@ namespace Lemonade
             Console.WriteLine($"Sugar Cubes cost ${pricePerSugarCube}");
             Console.WriteLine($"Ice Cubes cost ${pricePerIceCube}");
             Console.WriteLine($"Cups cost ${pricePerCup}");
-            Console.WriteLine("-----------------------------");
+            Console.WriteLine("--------------------------------");
         }
 
         public void BuyInventory(Player player)

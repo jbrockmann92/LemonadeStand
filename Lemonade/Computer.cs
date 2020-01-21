@@ -33,7 +33,7 @@ namespace Lemonade
             }
 
         }
-        //Still need function to sell things and add to money
+
         public void MakeRecipe()
         {
             recipe.amountOfLemons = 1;
