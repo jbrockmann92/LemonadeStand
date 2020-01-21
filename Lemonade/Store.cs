@@ -24,7 +24,7 @@ namespace Lemonade
         //Do Single Responsibility Here in GoToStore function
         public void GoToStore(Player player)
         {
-            Console.WriteLine("Hello, welcome to the store.");
+            Console.WriteLine($"Hello {player.name}, welcome to the store.");
             Console.WriteLine("----------------------------");
             PrintPrices();
             BuyInventory(player);
