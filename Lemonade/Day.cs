@@ -47,7 +47,7 @@ namespace Lemonade
             }
         }
 
-        //Added RandTempterature() in line with OCP, rather than adding it to the RandCondition() function
+        //Added RandTempterature() in line with Open/Closed Prinicple, rather than adding it to the RandCondition() function
         public void RandTemperature()
         {
             Random rnd = new Random();

@@ -15,7 +15,7 @@ namespace Lemonade
         public void ChanceToBuy(Customer customer)
         {
             Random rng = new Random();
-            int randomNumber = rng.Next(100);
+            int randomNumber = rng.Next(1, 100);
         }
     }
 }
