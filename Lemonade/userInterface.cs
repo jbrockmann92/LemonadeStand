@@ -19,7 +19,7 @@ namespace Lemonade
             Console.WriteLine("You'll also get the chance to change how much you charge per cup before each day.");
             Console.WriteLine("You'll earn money, and use that money to buy more ingredients.");
             Console.WriteLine("The game lasts 7 days, and you'll be given a score at the end.");
-            Console.WriteLine("Press any key when you're ready to start.");
+            Console.WriteLine("Press the return key to begin.");
             Console.ReadLine();
             Console.WriteLine("Good luck!");
             Console.ReadLine();

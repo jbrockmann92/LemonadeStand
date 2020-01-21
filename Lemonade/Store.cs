@@ -37,6 +37,7 @@ namespace Lemonade
 
         public void BuyInventory(Player player)
         {
+            Console.WriteLine($"You currently have ${player.wallet.Money} to spend");
             bool isValid = false;
             while(isValid == false)
             {
@@ -52,7 +53,7 @@ namespace Lemonade
                     else
                     {
                         Console.WriteLine("You can't afford that!");
-                        return;
+                        BuyInventory(player);
                     }
                     Console.WriteLine("How many Sugar Cubes would you like to buy?");
                     moreSugar = int.Parse(Console.ReadLine());
@@ -64,7 +65,7 @@ namespace Lemonade
                     else
                     {
                         Console.WriteLine("You're out of money!");
-                        return;
+                        BuyInventory(player);
                     }
 
                     Console.WriteLine("How many Ice Cubes would you like to buy?");
@@ -77,7 +78,7 @@ namespace Lemonade
                     else
                     {
                         Console.WriteLine("You can't afford that!");
-                        return;
+                        BuyInventory(player);
                     }
 
                     Console.WriteLine("How many cups would you like to buy?");
@@ -90,7 +91,7 @@ namespace Lemonade
                     else
                     {
                         Console.WriteLine("You can't afford that!");
-                        return;
+                        BuyInventory(player);
                     }
                 }
             }

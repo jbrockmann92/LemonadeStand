@@ -13,6 +13,7 @@ namespace Lemonade
         public Wallet wallet = new Wallet();
         public Recipe recipe = new Recipe();
         public Pitcher pitcher = new Pitcher();
+        public List<Cup> cupsSold = new List<Cup>();
 
         public void RecipeAndPrice()
         {
@@ -94,7 +95,41 @@ namespace Lemonade
             }
         }
 
-        
+        public void DeclareInventory()
+        {
+            Console.WriteLine("");
+            Console.WriteLine($"You have {inventory.lemons.Count} lemons");
+            Console.WriteLine($"You have {inventory.sugarCubes.Count} sugar cubes");
+            Console.WriteLine($"You have {inventory.iceCubes.Count} ice cubes");
+            Console.WriteLine($"You have {inventory.cups.Count} cups");
+            Console.WriteLine($"You have ${Math.Round(wallet.Money, 2)} left");
+            Console.WriteLine("");
+        }
+
+        public void AddMoney(Player player)
+        //Single responsibility method for adding money to wallet after a sale
+        {
+            foreach (Cup cup in cupsSold)
+            {
+                player.wallet.Money += player.recipe.pricePerCup;
+            }
+        }
+
+        public void CheckProfitOrLoss(Player player)
+        {
+            //Need to print only to two digits. Anywhere with money
+            Console.WriteLine($"You sold a total of {cupsSold.Count} cups");
+            if (player.wallet.Money > 100)
+            {
+                Console.WriteLine($"Your total profit is ${Math.Round((100 - player.wallet.Money) * -1)}");
+                //Rounding isn't exactly working. Not sure why. Maybe I'm using it wrong
+            }
+            if (player.wallet.Money <= 100)
+            {
+                Console.WriteLine($"Your total loss is ${Math.Round(player.wallet.Money - 100)}");
+            }
+
+        }
     }
     
 }
