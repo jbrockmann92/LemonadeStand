@@ -99,7 +99,7 @@ namespace Lemonade
 
         public void AddLemons(Player player)
         {
-            for (int i = 0; i < moreLemons; i++)
+            for (int i = 0; i < moreSugar; i++)
             {
                 Lemon lemon = new Lemon();
                 player.inventory.lemons.Add(lemon);
