@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lemonade
 {
-    class Inventory
+    public class Inventory
     {
         public List<Lemon> lemons = new List<Lemon>();
         public List<IceCube> iceCubes = new List<IceCube>();

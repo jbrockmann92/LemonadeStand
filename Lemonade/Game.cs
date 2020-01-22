@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lemonade
 {
-    class Game
+    public class Game
     {
         Player player = new Player();
         Player player2 = new Player();

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lemonade
+namespace LemonadeTests
 {
-    public abstract class Item
+    class HumanTests
     {
-        public string name;
     }
 }

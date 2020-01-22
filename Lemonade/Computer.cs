@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lemonade
 {
-    class Computer : Player
+    public class Computer : Player
 
     {
         public void AddInventory()
